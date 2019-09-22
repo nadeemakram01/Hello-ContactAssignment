@@ -10,10 +10,15 @@ import UIKit
 import Contacts
 
 class ViewController: UIViewController {
+    
+    var contacts = [CNContact]()
 
-   
+    @IBOutlet var tableView: UITableView!
+
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
         
         let store = CNContactStore()
@@ -29,8 +34,11 @@ class ViewController: UIViewController {
             retrieveContacts(from: store)
         }
         
+        tableView.delegate = self
+        tableView.dataSource = self
         
     }
+    
     
     func retrieveContacts(from store: CNContactStore) {
         let containerId = store.defaultContainerIdentifier()
@@ -40,15 +48,62 @@ class ViewController: UIViewController {
                            CNContactImageDataAvailableKey as CNKeyDescriptor,
                            CNContactImageDataKey as CNKeyDescriptor]
         
+        //    let tmpcontacts = try! store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch)
         
         
-         let contacts = try! store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch)
-        
-        print(contacts)
-        
+        contacts = try! store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch)
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
         
         
+        
+        
+        
+        
+        
     }
+    
+}
+
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contacts.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell") as! ContactTableViewCell
+        let contact = contacts[indexPath.row]
+        
+        cell.nameLabel.text = "\(contact.givenName) \(contact.familyName)"
+        
+        if  contact.imageDataAvailable == true, let imageData = contact.imageData {
+            cell.contactImage.image = UIImage(data: imageData)
+        }
+        
+        return cell
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+extension ViewController: UITableViewDelegate{
+    
+    //extension implementation
+}
+
+
+
 
 
