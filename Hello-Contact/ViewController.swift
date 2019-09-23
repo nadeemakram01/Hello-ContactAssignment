@@ -10,15 +10,10 @@ import UIKit
 import Contacts
 
 class ViewController: UIViewController {
-    
     var contacts = [Contact]()
-
     @IBOutlet var tableView: UITableView!
-
     
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
         
         let store = CNContactStore()
@@ -37,8 +32,8 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        navigationItem.rightBarButtonItem = editButtonItem
     }
-    
     
     func retrieveContacts(from store: CNContactStore) {
         let containerId = store.defaultContainerIdentifier()
@@ -49,27 +44,33 @@ class ViewController: UIViewController {
                            CNContactImageDataKey as CNKeyDescriptor]
         
         //    let tmpcontacts = try! store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch)
+        //.map { Contact(contact: $0) }
         
+        // print(tmpcontacts)
+        
+        //    contacts = tmpcontacts.map(Contact.init)
+        //
+        //    DispatchQueue.main.async { [weak self] in
+        //      self?.tableView.reloadData()
         
         contacts = try! store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch).map { Contact (contact: $0)
-        
+            
         }
-        
-        
-        
-        
-        
         
         
     }
     
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        tableView.setEditing(editing, animated: animated)
+    }
 }
 
 extension ViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,8 +87,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate{
-    
+extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = contacts[indexPath.row]
         let alertController = UIAlertController(title: "Contact tapped",
@@ -99,6 +99,7 @@ extension ViewController: UITableViewDelegate{
         alertController.addAction(dismissAction)
         present(alertController, animated: true, completion: nil)
     }
+    
     
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -116,34 +117,20 @@ extension ViewController: UITableViewDelegate{
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let contact = contacts.remove(at: sourceIndexPath.row)
+        contacts.insert(contact, at: destinationIndexPath.row)
+    }
 }
 
-
-
-    extension ViewController: UITableViewDataSourcePrefetching {
-        func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-            for indexPath in indexPaths {
-                let contact = contacts[indexPath.row]
-                contact.fetchImageIfNeeded()
-              
-            }
+extension ViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            let contact = contacts[indexPath.row]
+            contact.fetchImageIfNeeded()
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
