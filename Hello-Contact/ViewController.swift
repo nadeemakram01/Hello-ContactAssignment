@@ -88,7 +88,18 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate{
     
-    //extension implementation
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contact = contacts[indexPath.row]
+        let alertController = UIAlertController(title: "Contact tapped",
+                                                message: "You tapped \(contact.givenName)", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: { action in
+            tableView.deselectRow(at: indexPath, animated: true)
+        })
+        
+        alertController.addAction(dismissAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
 }
 
 
