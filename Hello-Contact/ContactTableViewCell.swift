@@ -14,4 +14,9 @@ class ContactTableViewCell: UITableViewCell {
     
     @IBOutlet var contactImage: UIImageView!
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        contactImage.image = nil
+    }
 }
