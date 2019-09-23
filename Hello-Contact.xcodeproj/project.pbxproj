@@ -13,6 +13,7 @@
 		2AA8FE562336BF3E00D968D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AA8FE552336BF3E00D968D7 /* Assets.xcassets */; };
 		2AA8FE592336BF3E00D968D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AA8FE572336BF3E00D968D7 /* LaunchScreen.storyboard */; };
 		2AA8FE652338007200D968D7 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8FE642338007200D968D7 /* ContactTableViewCell.swift */; };
+		2AA969342338DBE5003D5A3C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA969332338DBE5003D5A3C /* Contact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2AA8FE582336BF3E00D968D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AA8FE5A2336BF3E00D968D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AA8FE642338007200D968D7 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		2AA969332338DBE5003D5A3C /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				2AA8FE642338007200D968D7 /* ContactTableViewCell.swift */,
 				2AA8FE4E2336BF3C00D968D7 /* AppDelegate.swift */,
 				2AA8FE502336BF3C00D968D7 /* ViewController.swift */,
+				2AA969332338DBE5003D5A3C /* Contact.swift */,
 				2AA8FE522336BF3C00D968D7 /* Main.storyboard */,
 				2AA8FE552336BF3E00D968D7 /* Assets.xcassets */,
 				2AA8FE572336BF3E00D968D7 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AA969342338DBE5003D5A3C /* Contact.swift in Sources */,
 				2AA8FE652338007200D968D7 /* ContactTableViewCell.swift in Sources */,
 				2AA8FE512336BF3C00D968D7 /* ViewController.swift in Sources */,
 				2AA8FE4F2336BF3C00D968D7 /* AppDelegate.swift in Sources */,

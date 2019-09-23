@@ -11,7 +11,7 @@ import Contacts
 
 class ViewController: UIViewController {
     
-    var contacts = [CNContact]()
+    var contacts = [Contact]()
 
     @IBOutlet var tableView: UITableView!
 
@@ -51,9 +51,8 @@ class ViewController: UIViewController {
         //    let tmpcontacts = try! store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch)
         
         
-        contacts = try! store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch)
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
+        contacts = try! store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch).map { Contact (contact: $0)
+        
         }
         
         
@@ -79,29 +78,42 @@ extension ViewController: UITableViewDataSource {
         
         cell.nameLabel.text = "\(contact.givenName) \(contact.familyName)"
         
-        if  contact.imageDataAvailable == true, let imageData = contact.imageData {
-            cell.contactImage.image = UIImage(data: imageData)
+        contact.fetchImageIfNeeded { image in
+            cell.contactImage.image = image
         }
         
         return cell
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 extension ViewController: UITableViewDelegate{
     
     //extension implementation
 }
+
+
+
+    extension ViewController: UITableViewDataSourcePrefetching {
+        func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+            for indexPath in indexPaths {
+                let contact = contacts[indexPath.row]
+                contact.fetchImageIfNeeded()
+              
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
