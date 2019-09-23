@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         
         collectionView.dataSource = self
         
+        
         let store = CNContactStore()
         let authorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
         
@@ -33,15 +34,10 @@ class ViewController: UIViewController {
             retrieveContacts(from: store)
         }
         
+        
     }
     
-    
-    
-    
-    
-    
-    
-    
+     
     func retrieveContacts(from store: CNContactStore) {
         let containerId = store.defaultContainerIdentifier()
         let predicate = CNContact.predicateForContactsInContainer(withIdentifier: containerId)
@@ -76,6 +72,41 @@ extension ViewController: UICollectionViewDataSource {
         }
         
         return cell
+    
     }
     
+
+    
+    
+
 }
+    
+    
+extension ViewController:UICollectionViewDelegateFlowLayout {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let  width = floor((collectionView.bounds.width - 2) / 3)
+        return CGSize(width: width, height: 90)
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) ->
+        
+        CGFloat{
+        let  availableWidthForCells = collectionView.bounds.width - 2
+            let totalGutterSpace = availableWidthForCells.truncatingRemainder(dividingBy: 3)
+            
+            let cellSpacing = totalGutterSpace / 2
+            
+            return 1 + cellSpacing
+    }
+    
+    
+    
+    
+    
+}
+    
+
