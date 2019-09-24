@@ -76,6 +76,8 @@ class ViewController: UIViewController {
         }
     }
     
+    //Reordering Method
+    
     func beginReorderingForCell(_ cell: UICollectionViewCell, atIndexPath indexPath: IndexPath, gestureRecognizer: UILongPressGestureRecognizer) {
         switch gestureRecognizer.state {
         case .began:
