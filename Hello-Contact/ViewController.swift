@@ -44,6 +44,8 @@ class ViewController: UIViewController {
                                                                action: #selector(self.userDidLongPress(_:)))
         collectionView.addGestureRecognizer(longPressRecognizer)
         
+        // Adding the edit button
+        
         navigationItem.rightBarButtonItem = editButtonItem
     }
     
@@ -210,6 +212,14 @@ extension ViewController: UICollectionViewDelegate {
             }, completion: nil)
         })
     }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if isEditing {
+            cell.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        } else {
+            cell.backgroundColor = .clear
+        }
+    }
 }
+
     
 
