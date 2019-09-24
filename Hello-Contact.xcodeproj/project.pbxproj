@@ -14,6 +14,7 @@
 		2AA8FE592336BF3E00D968D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AA8FE572336BF3E00D968D7 /* LaunchScreen.storyboard */; };
 		2AA8FE652338007200D968D7 /* ContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8FE642338007200D968D7 /* ContactCollectionViewCell.swift */; };
 		2AA969342338DBE5003D5A3C /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA969332338DBE5003D5A3C /* Contact.swift */; };
+		2ABF3F9423399D34008D322E /* ContactCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF3F9323399D34008D322E /* ContactCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		2AA8FE5A2336BF3E00D968D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AA8FE642338007200D968D7 /* ContactCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewCell.swift; sourceTree = "<group>"; };
 		2AA969332338DBE5003D5A3C /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		2ABF3F9323399D34008D322E /* ContactCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactCollectionViewLayout.swift; path = ../ContactCollectionViewLayout.swift; sourceTree = "<group>"; };
+		2AF5B35823398A8C00BCB9F0 /* LayoutExploration.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LayoutExploration.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,7 @@
 		2AA8FE422336BF3C00D968D7 = {
 			isa = PBXGroup;
 			children = (
+				2AF5B35823398A8C00BCB9F0 /* LayoutExploration.playground */,
 				2AA8FE4D2336BF3C00D968D7 /* Hello-Contact */,
 				2AA8FE4C2336BF3C00D968D7 /* Products */,
 			);
@@ -62,6 +66,7 @@
 				2AA8FE4E2336BF3C00D968D7 /* AppDelegate.swift */,
 				2AA8FE502336BF3C00D968D7 /* ViewController.swift */,
 				2AA969332338DBE5003D5A3C /* Contact.swift */,
+				2ABF3F9323399D34008D322E /* ContactCollectionViewLayout.swift */,
 				2AA8FE522336BF3C00D968D7 /* Main.storyboard */,
 				2AA8FE552336BF3E00D968D7 /* Assets.xcassets */,
 				2AA8FE572336BF3E00D968D7 /* LaunchScreen.storyboard */,
@@ -145,6 +150,7 @@
 				2AA8FE652338007200D968D7 /* ContactCollectionViewCell.swift in Sources */,
 				2AA8FE512336BF3C00D968D7 /* ViewController.swift in Sources */,
 				2AA8FE4F2336BF3C00D968D7 /* AppDelegate.swift in Sources */,
+				2ABF3F9423399D34008D322E /* ContactCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
