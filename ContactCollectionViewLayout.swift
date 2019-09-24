@@ -75,7 +75,7 @@ class ContactCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-    return nil
+        return layoutAttributes[indexPath.row]
     }
     }
     
