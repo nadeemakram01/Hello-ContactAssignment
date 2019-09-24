@@ -40,8 +40,49 @@ class ViewController: UIViewController {
             retrieveContacts(from: store)
         }
         
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self,
+                                                               action: #selector(self.userDidLongPress(_:)))
+        collectionView.addGestureRecognizer(longPressRecognizer)
         
+        navigationItem.rightBarButtonItem = editButtonItem
     }
+    
+    
+    
+    @objc func userDidLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        // 1
+        let tappedPoint = gestureRecognizer.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: tappedPoint),
+            let tappedCell = collectionView.cellForItem(at: indexPath)
+            else { return }
+        
+        // 2
+        let confirmationDialog = UIAlertController(title: "Delete contact?", message: "Are you sure you want to delete this contact?", preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] _ in
+            // 3
+            self?.contacts.remove(at: indexPath.row)
+            self?.collectionView.deleteItems(at: [indexPath])
+        })
+        
+        let cancelAction = UIAlertAction(title: "No", style: .default, handler: nil)
+        
+        confirmationDialog.addAction(deleteAction)
+        confirmationDialog.addAction(cancelAction)
+        
+        // 4
+        if let popOver = confirmationDialog.popoverPresentationController {
+            popOver.sourceView = tappedCell
+        }
+        
+        present(confirmationDialog, animated: true, completion: nil)
+    }
+    
+    
+        
+        
+        
+    
     
      
     func retrieveContacts(from store: CNContactStore) {
