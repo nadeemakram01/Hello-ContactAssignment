@@ -20,6 +20,12 @@ class ViewController: UIViewController {
         
         collectionView.dataSource = self
         
+        collectionView.delegate = self
+        collectionView.collectionViewLayout = ContactCollectionViewLayout()
+
+        
+        
+        
         
         let store = CNContactStore()
         let authorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
