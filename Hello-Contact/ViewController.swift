@@ -112,11 +112,16 @@ class ViewController: UIViewController {
         
         if let popOver = confirmationDialog.popoverPresentationController {
             popOver.sourceView = tappedCell
+            
+            if let cell = tappedCell as? ContactCollectionViewCell {
+                let imageCenter = cell.contactImage.center
+                popOver.sourceRect = CGRect(x: imageCenter.x,  y: imageCenter.y,
+                                            width: 0,  height: 0)
+            }
         }
         
         present(confirmationDialog, animated: true, completion: nil)
     }
-    
         
         
         
