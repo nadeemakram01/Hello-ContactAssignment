@@ -50,17 +50,53 @@ class ViewController: UIViewController {
     
     
     @objc func userDidLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        // 1
         let tappedPoint = gestureRecognizer.location(in: collectionView)
         guard let indexPath = collectionView.indexPathForItem(at: tappedPoint),
             let tappedCell = collectionView.cellForItem(at: indexPath)
             else { return }
         
-        // 2
+        if isEditing {
+            beginReorderingForCell(tappedCell, atIndexPath: indexPath, gestureRecognizer: gestureRecognizer)
+        } else {
+            deleteContactForCell(tappedCell, atIndexPath: indexPath)
+        }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        for cell in collectionView.visibleCells {
+            UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut], animations: {
+                if editing {
+                    cell.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+                } else {
+                    cell.backgroundColor = .clear
+                }
+            }, completion: nil)
+        }
+    }
+    
+    func beginReorderingForCell(_ cell: UICollectionViewCell, atIndexPath indexPath: IndexPath, gestureRecognizer: UILongPressGestureRecognizer) {
+        switch gestureRecognizer.state {
+        case .began:
+            collectionView.beginInteractiveMovementForItem(at: indexPath)
+            UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut], animations: {
+                cell.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            }, completion: nil)
+        case .changed:
+            let position = gestureRecognizer.location(in: collectionView)
+            collectionView.updateInteractiveMovementTargetPosition(position)
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.endInteractiveMovement()
+        }
+    }
+    
+    func deleteContactForCell(_ tappedCell: UICollectionViewCell, atIndexPath indexPath: IndexPath) {
         let confirmationDialog = UIAlertController(title: "Delete contact?", message: "Are you sure you want to delete this contact?", preferredStyle: .actionSheet)
         
         let deleteAction = UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] _ in
-            // 3
             self?.contacts.remove(at: indexPath.row)
             self?.collectionView.deleteItems(at: [indexPath])
         })
@@ -70,14 +106,12 @@ class ViewController: UIViewController {
         confirmationDialog.addAction(deleteAction)
         confirmationDialog.addAction(cancelAction)
         
-        // 4
         if let popOver = confirmationDialog.popoverPresentationController {
             popOver.sourceView = tappedCell
         }
         
         present(confirmationDialog, animated: true, completion: nil)
     }
-    
     
         
         
