@@ -158,12 +158,16 @@ extension ViewController: UICollectionViewDataSource {
     
     }
     
-
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
-    
-
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedContact = contacts.remove(at: sourceIndexPath.row)
+        contacts.insert(movedContact, at: destinationIndexPath.row)
+    }
 }
-    
+
     
 extension ViewController:UICollectionViewDelegateFlowLayout {
     
