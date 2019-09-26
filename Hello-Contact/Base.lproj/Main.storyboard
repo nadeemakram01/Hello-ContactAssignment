@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KRK-Sq-SKr">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KRK-Sq-SKr">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,24 +96,24 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sjM-B9-DIa">
                                         <rect key="frame" x="8" y="8" width="375" height="140"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j5h-c9-gjp">
-                                                <rect key="frame" x="157.66666666666666" y="23" width="60" height="60"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5h-c9-gjp">
+                                                <rect key="frame" x="157.66666666666666" y="23" width="120" height="120"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="120" placeholder="YES" id="Aec-yi-7rf"/>
-                                                    <constraint firstAttribute="width" constant="120" placeholder="YES" id="Zve-Od-HCS"/>
+                                                    <constraint firstAttribute="height" constant="120" id="6vO-jL-W8s"/>
+                                                    <constraint firstAttribute="width" constant="120" id="8d8-4Z-Ism"/>
                                                     <constraint firstAttribute="width" constant="60" placeholder="YES" id="jqT-NU-z8W"/>
                                                     <constraint firstAttribute="height" constant="60" placeholder="YES" id="zl0-Nd-Mzm"/>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="Aec-yi-7rf"/>
-                                                        <exclude reference="Zve-Od-HCS"/>
+                                                        <exclude reference="6vO-jL-W8s"/>
+                                                        <exclude reference="8d8-4Z-Ism"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <exclude reference="Aec-yi-7rf"/>
-                                                        <exclude reference="Zve-Od-HCS"/>
+                                                        <include reference="6vO-jL-W8s"/>
+                                                        <include reference="8d8-4Z-Ism"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=regular">
