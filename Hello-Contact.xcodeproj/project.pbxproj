@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A18DD5A233D6C9600706B30 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A18DD59233D6C9600706B30 /* ContactDetailViewController.swift */; };
 		2AA8FE4F2336BF3C00D968D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8FE4E2336BF3C00D968D7 /* AppDelegate.swift */; };
 		2AA8FE512336BF3C00D968D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8FE502336BF3C00D968D7 /* ViewController.swift */; };
 		2AA8FE542336BF3C00D968D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AA8FE522336BF3C00D968D7 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A18DD59233D6C9600706B30 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		2AA8FE4B2336BF3C00D968D7 /* Hello-Contact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello-Contact.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA8FE4E2336BF3C00D968D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AA8FE502336BF3C00D968D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				2AA8FE502336BF3C00D968D7 /* ViewController.swift */,
 				2AA969332338DBE5003D5A3C /* Contact.swift */,
 				2ABF3F9323399D34008D322E /* ContactCollectionViewLayout.swift */,
+				2A18DD59233D6C9600706B30 /* ContactDetailViewController.swift */,
 				2AA8FE522336BF3C00D968D7 /* Main.storyboard */,
 				2AA8FE552336BF3E00D968D7 /* Assets.xcassets */,
 				2AA8FE572336BF3E00D968D7 /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 				2AA8FE652338007200D968D7 /* ContactCollectionViewCell.swift in Sources */,
 				2AA8FE512336BF3C00D968D7 /* ViewController.swift in Sources */,
 				2AA8FE4F2336BF3C00D968D7 /* AppDelegate.swift in Sources */,
+				2A18DD5A233D6C9600706B30 /* ContactDetailViewController.swift in Sources */,
 				2ABF3F9423399D34008D322E /* ContactCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
