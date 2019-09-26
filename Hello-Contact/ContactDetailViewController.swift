@@ -11,6 +11,9 @@ import UIKit
 class ContactDetailViewController: UIViewController {
     
     @IBOutlet var scrollViewBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var contactImage: UIImageView!
+    @IBOutlet var contactNameLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +31,60 @@ class ContactDetailViewController: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    let views: [String: Any] = ["contactImage": contactImage, "contactNameLabel": contactNameLabel]
+    
+        var allConstraints = [NSLayoutConstraint]()
+    
+        compactWidthConstraint = contactImage.widthAnchor.constraint(equalToConstant: 60)
+        compactHeightConstraint = contactImage.heightAnchor.constraint(equalToConstant: 60)
+    
+        regularWidthConstraint = contactImage.widthAnchor.constraint(equalToConstant: 120)
+        regularHeightConstraint = contactImage.heightAnchor.constraint(equalToConstant: 120)
+    
+        let verticalPositioningConstraints = NSLayoutConstraint.constraints(
+          withVisualFormat: "V:|-[contactImage]-[contactNameLabel]",
+          options: [.alignAllCenterX], metrics: nil, views: views)
+    
+        allConstraints += verticalPositioningConstraints
+    
+        let centerXConstraint = contactImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+    
+        allConstraints.append(centerXConstraint)
+        if traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular {
+          allConstraints.append(regularWidthConstraint)
+          allConstraints.append(regularHeightConstraint)
+        } else {
+          allConstraints.append(compactWidthConstraint)
+          allConstraints.append(compactHeightConstraint)
+        }
+    
+        NSLayoutConstraint.activate(allConstraints)
+      }
+    
+    @objc func keyboardWillAppear(_ notification: Notification) {
+      guard let userInfo = notification.userInfo,
+        let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+        let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+        else { return }
+      
+      scrollViewBottomConstraint.constant = keyboardFrame.cgRectValue.size.height
+      UIView.animate(withDuration: TimeInterval(animationDuration), animations: { [weak self ] in
+        self?.view.layoutIfNeeded()
+      })
     }
-    */
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+      guard let userInfo = notification.userInfo,
+        let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+        else { return }
+      
+      scrollViewBottomConstraint.constant = 0
+      UIView.animate(withDuration: TimeInterval(animationDuration), animations: { [weak self ] in
+        self?.view.layoutIfNeeded()
+      })
+    }
+
+    
 
 }
