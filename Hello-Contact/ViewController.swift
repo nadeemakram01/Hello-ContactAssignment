@@ -134,7 +134,10 @@ class ViewController: UIViewController {
         let keysToFetch = [CNContactGivenNameKey as CNKeyDescriptor,
                            CNContactFamilyNameKey as CNKeyDescriptor,
                            CNContactImageDataAvailableKey as CNKeyDescriptor,
-                           CNContactImageDataKey as CNKeyDescriptor]
+                           CNContactImageDataKey as CNKeyDescriptor,
+                           CNContactEmailAddressesKey as CNKeyDescriptor,
+                           CNContactPhoneNumbersKey as CNKeyDescriptor,
+                           CNContactPostalAddressesKey as CNKeyDescriptor]
         
         contacts = try! store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch)
             .map { Contact(contact: $0) }
