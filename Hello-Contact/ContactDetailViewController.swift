@@ -34,7 +34,7 @@ class ContactDetailViewController: UIViewController {
           }
           
           contactNameLabel.text = "\(contact.givenName) \(contact.familyName)"
-          contactPhoneLabel.text = contact.phoneNumber
+            contactPhoneLabel.text = contact.phoneNumber
           contactEmailLabel.text = contact.emailAddress
           contactAddressLabel.text = contact.address
         }

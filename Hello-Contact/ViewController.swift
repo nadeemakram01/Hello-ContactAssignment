@@ -47,7 +47,10 @@ class ViewController: UIViewController {
         // Adding the edit button
         
         navigationItem.rightBarButtonItem = editButtonItem
-    }
+   if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: collectionView)
+          }
+        }
     
     
     
@@ -245,4 +248,23 @@ extension ViewController {
   }
 }
     
-
+extension ViewController: UIViewControllerPreviewingDelegate {
+  func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+    guard let tappedIndexPath = collectionView.indexPathForItem(at: location)
+      else { return nil }
+    
+    let contact = contacts[tappedIndexPath.row]
+    
+    guard let viewController = storyboard?.instantiateViewController(withIdentifier:"ContactDetailViewController") as? ContactDetailViewController
+      else { return nil }
+    
+    viewController.contact = contact
+    return viewController
+  }
+  
+  func previewingContext(_ previewingContext: UIViewControllerPreviewing,
+                         commit viewControllerToCommit: UIViewController) {
+    
+    navigationController?.show(viewControllerToCommit, sender: self)
+  }
+}
