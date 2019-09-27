@@ -222,6 +222,10 @@ extension ViewController: UICollectionViewDelegate {
             })
         })
     }
+    
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if isEditing {
             cell.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
@@ -231,5 +235,14 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
+extension ViewController {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let contactDetailVC = segue.destination as? ContactDetailViewController,
+      segue.identifier == "detailViewSegue",
+      let selectedIndex = collectionView.indexPathsForSelectedItems?.first {
+        contactDetailVC.contact = contacts[selectedIndex.row]
+    }
+  }
+}
     
 
