@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SNg-n2-wtB">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SNg-n2-wtB">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Custom Presented View Controller-->
+        <scene sceneID="iSK-uR-gb0">
+            <objects>
+                <viewController id="oik-Q0-aSG" customClass="CustomPresentedViewController" customModule="Hello_Contact" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vAv-2g-msO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="itS-AU-QgQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vab-FX-E9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="-533"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Hello_Contacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Hello_Contact" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +41,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContactCollectionViewCell" id="zoA-Li-93J" customClass="ContactCollectionViewCell" customModule="Hello_Contacts" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContactCollectionViewCell" id="zoA-Li-93J" customClass="ContactCollectionViewCell" customModule="Hello_Contact" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -73,7 +87,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FWO-Hj-tnA"/>
+                    <navigationItem key="navigationItem" id="FWO-Hj-tnA">
+                        <barButtonItem key="leftBarButtonItem" title="Show Modal" id="ncg-sZ-0uR">
+                            <connections>
+                                <segue destination="oik-Q0-aSG" kind="presentation" id="wTu-dx-uYv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="bjk-3E-mZp" id="3za-VL-waN"/>
                         <segue destination="JvG-Ub-aGS" kind="show" identifier="detailViewSegue" id="9Gr-nO-o43"/>
@@ -86,7 +106,7 @@
         <!--Contact Detail View Controller-->
         <scene sceneID="cQq-Lx-ykA">
             <objects>
-                <viewController storyboardIdentifier="ContactDetailViewController" id="JvG-Ub-aGS" customClass="ContactDetailViewController" customModule="Hello_Contacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactDetailViewController" id="JvG-Ub-aGS" customClass="ContactDetailViewController" customModule="Hello_Contact" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pxV-xU-NHV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,7 +164,6 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="80" id="Gb0-vB-ajM"/>
                                                                 </constraints>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -215,13 +234,34 @@
                                     <constraint firstItem="0A8-1P-4qh" firstAttribute="leading" secondItem="GsP-z4-Q9J" secondAttribute="leading" id="dK6-tw-26q"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Yp-26-dwl">
+                                <rect key="frame" x="0.0" y="733" width="375" height="350"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4F-bl-QnQ">
+                                        <rect key="frame" x="138" y="8" width="99" height="30"/>
+                                        <state key="normal" title="Toggle Drawer"/>
+                                        <connections>
+                                            <action selector="toggleDrawerTapped" destination="JvG-Ub-aGS" eventType="touchUpInside" id="AgM-WT-0it"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="6VH-0B-o9V"/>
+                                    <constraint firstItem="Y4F-bl-QnQ" firstAttribute="centerX" secondItem="6Yp-26-dwl" secondAttribute="centerX" id="8sd-Hh-pLL"/>
+                                    <constraint firstItem="Y4F-bl-QnQ" firstAttribute="top" secondItem="6Yp-26-dwl" secondAttribute="top" constant="8" id="hqy-pP-UbD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Rbn-nM-I6c" firstAttribute="bottom" secondItem="6Yp-26-dwl" secondAttribute="bottom" constant="-305" id="6lL-rp-amo"/>
                             <constraint firstItem="GsP-z4-Q9J" firstAttribute="top" secondItem="Rbn-nM-I6c" secondAttribute="top" id="Age-3T-luD"/>
                             <constraint firstItem="0A8-1P-4qh" firstAttribute="width" secondItem="Rbn-nM-I6c" secondAttribute="width" id="Dea-er-pOB"/>
+                            <constraint firstItem="6Yp-26-dwl" firstAttribute="centerX" secondItem="Rbn-nM-I6c" secondAttribute="centerX" id="M3m-3W-jrt"/>
                             <constraint firstItem="GsP-z4-Q9J" firstAttribute="leading" secondItem="Rbn-nM-I6c" secondAttribute="leading" id="VHV-yW-RsQ"/>
                             <constraint firstItem="GsP-z4-Q9J" firstAttribute="bottom" secondItem="Rbn-nM-I6c" secondAttribute="bottom" id="d9w-6V-gCa"/>
+                            <constraint firstItem="6Yp-26-dwl" firstAttribute="width" secondItem="pxV-xU-NHV" secondAttribute="width" id="fZl-UB-uLi"/>
                             <constraint firstItem="GsP-z4-Q9J" firstAttribute="trailing" secondItem="Rbn-nM-I6c" secondAttribute="trailing" id="jMS-yR-hcT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rbn-nM-I6c"/>
@@ -231,13 +271,14 @@
                         <outlet property="contactEmailLabel" destination="gtx-Yo-pWm" id="gi7-vo-nQD"/>
                         <outlet property="contactImage" destination="mhw-of-6J5" id="ITw-4V-Htl"/>
                         <outlet property="contactNameLabel" destination="xhN-d2-koJ" id="UCH-aE-qfN"/>
-                        <outlet property="contactPhoneLabel" destination="XgL-a3-AX2" id="YRx-rA-Igz"/>
+                        <outlet property="contactPhoneLabel" destination="XgL-a3-AX2" id="1WI-fi-Xsl"/>
+                        <outlet property="drawer" destination="6Yp-26-dwl" id="Zde-0B-ora"/>
                         <outlet property="scrollViewBottomConstraint" destination="QzW-1a-0eP" id="iKu-yv-bgL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fX1-zZ-T3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1149.2753623188407" y="131.25"/>
+            <point key="canvasLocation" x="1148" y="130.78817733990149"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ojA-9f-sbk">
